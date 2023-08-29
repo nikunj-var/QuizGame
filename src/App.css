@@ -1,0 +1,80 @@
+.App {
+  text-align: center;
+}
+.main-page{
+  display: flex;
+}
+.main-page .round{
+  width: 70%;
+}
+.main-page .correctWords{
+  width: 30%;
+}
+.main-page header ul{
+  display: flex;
+  justify-content: space-between;
+}
+.main-page header ul li{
+  list-style: none;
+  margin: 20px;
+}
+.letterbutton{
+  margin: 10px;
+  padding: 12px 20px 12px 20px;
+}
+.showletter{
+  margin-top: 60px;
+}
+.showletter button{
+  font-size: 25px;
+}
+.input-field-box{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.input-letter{
+  margin: auto;
+ padding: 10px 90px 10px 90px;
+ font-size: 20px;
+}
+.input-field-box button{
+  width: 140px;
+  margin: auto;
+}
+.correctWords table{
+  display: flex;
+  flex-direction: column;
+  margin-top: 300px;
+  align-items: center;
+}
+.main-item{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 300px;
+}
+.img{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+.main-item > input{
+    
+  height: 35px;
+  width: 400px;
+}
+.main-item > button{
+  height: 35px;
+  margin-top: 10px;
+  width: 250px;
+}
+li{
+  list-style: none;
+}
