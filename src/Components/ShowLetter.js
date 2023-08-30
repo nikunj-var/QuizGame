@@ -5,6 +5,8 @@ function ShowLetter({ setScore }) {
   const alphabetList = ["B", "L", "E", "T", "A"];
   const words = ["BELT", "EAT", "ATE", "LET", "TABLE"];
 
+  const studentId = sessionStorage.getItem("studentId");
+
   const [enteredword, setEnteredWord] = useState("");
   const [matchedWords, setMatchedWords] = useState([]);
 
@@ -14,27 +16,36 @@ function ShowLetter({ setScore }) {
 
   const handleInputSubmit = async (e) => {
     if (words.includes(enteredword)) {
-      setMatchedWords((prevMatchedWords) => [...prevMatchedWords, enteredword]);
+      try {
+        const studentDocRef = db.collection("quizResults").doc(studentId);
+        const querySnapshot = await studentDocRef.get();
+        if (querySnapshot.exists) {
+          const studentData = querySnapshot.data();
+          const wordArray = studentData.wordarray || [];
 
-      const wordRef = db.collection("words").where("data", "==", enteredword);
+          if (!wordArray.includes(enteredword)) {
+            wordArray.push(enteredword);
 
-      const querySnapshot = await wordRef.get();
+            await studentDocRef.update({
+              wordarray: wordArray,
+              score: studentData.score + 1,
+            });
 
-      e.preventDefault();
-
-      if (!querySnapshot.empty) {
-        alert("Word Counts Already");
-      } else {
-        // If the word doesn't exist, add it to Firestore
-        await db.collection("words").add({
-          data: enteredword,
-        });
-        setScore((prevScore) => parseInt(prevScore) + 1);
+            setScore((prevScore) => parseInt(prevScore) + 1);
+          } else {
+            alert("Word Counts Already");
+          }
+        } else {
+          alert("Student not found");
+        }
+      } catch (error) {
+        console.error("Error updating data:", error);
       }
     } else {
-      alert("You enter wrong word");
+      alert("You entered the wrong word");
     }
     setEnteredWord("");
+    console.log(studentId);
   };
 
   const handleReset = () => {

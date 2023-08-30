@@ -7,19 +7,26 @@ function TeacherDashboard() {
 
   useEffect(() => {
     const unsubscribe = db
-      .collection("studentenroll")
+      .collection("quizResults")
       .where("status", "==", "waiting")
       .onSnapshot((snapshot) => {
-        const waitingStudentsData = snapshot.docs.map((doc) => doc.data());
+        const waitingStudentsData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
         setWaitingStudents(waitingStudentsData);
       });
 
     return () => unsubscribe();
   }, []);
 
-  const startQuizForWaitingStudents = () => {
-    // Add your logic here to start the quiz for waiting students
-    // You can set their status to "inside" or take any other actions
+  const startQuizForWaitingStudents = async () => {
+    waitingStudents.forEach(async (student) => {
+      await db
+        .collection("quizResults")
+        .doc(student.id)
+        .update({ status: "inside" });
+    });
   };
 
   return (

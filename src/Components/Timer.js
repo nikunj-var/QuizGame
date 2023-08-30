@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Redirect } from "react";
 
 function Timer() {
-  const initialSeconds = parseInt(localStorage.getItem("remainingTime")) || 10;
+  const initialSeconds = parseInt(localStorage.getItem("remainingTime")) || 60;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [redirectToDashboard, setRedirectToDashboard] = useState(false);
 
