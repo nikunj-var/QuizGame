@@ -30,7 +30,6 @@ function ShowLetter({ setScore }) {
               wordarray: wordArray,
               score: studentData.score + 1,
             });
-
             setScore((prevScore) => parseInt(prevScore) + 1);
           } else {
             alert("Word Counts Already");
@@ -45,7 +44,6 @@ function ShowLetter({ setScore }) {
       alert("You entered the wrong word");
     }
     setEnteredWord("");
-    console.log(studentId);
   };
 
   const handleReset = () => {

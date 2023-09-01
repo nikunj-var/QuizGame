@@ -5,25 +5,24 @@ import React, { useState, useEffect } from "react";
 function MainPage() {
   const studentId = sessionStorage.getItem("studentId");
   const [score, setScore] = useState(0);
-  const [dataList, setDataList] = useState([]);
-  console.log(studentId);
+  const [wordArray, setWordArray] = useState([]);
 
   useEffect(() => {
     // Load the student's existing score from their document in quizResults collection
     const studentDocRef = db.collection("quizResults").doc(studentId);
 
-    studentDocRef.get().then((doc) => {
+    const unsubscribe = studentDocRef.onSnapshot((doc) => {
       if (doc.exists) {
         const studentData = doc.data();
         setScore(studentData.score || 0);
+        setWordArray(studentData.wordarray || []);
+        console.log("if statement runs");
+        console.log(score);
+        console.log(wordArray);
       }
     });
   }, [studentId]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("score", score);
-  // }, [score]);
-
+  // console.log(wordArray);
   return (
     <div className="main-page">
       <div className="round">
@@ -52,7 +51,13 @@ function MainPage() {
               <th scope="col">Data</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {wordArray.map((word, index) => (
+              <tr key={index}>
+                <td>{word}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

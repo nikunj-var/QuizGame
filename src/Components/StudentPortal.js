@@ -22,8 +22,8 @@ function StudentPortal() {
   const adddetails = async (e) => {
     e.preventDefault();
 
-    console.log("datalist", dataList[0]);
-    console.log("enteredcode", enteredcode);
+    // console.log("datalist", dataList[0]);
+    // console.log("enteredcode", enteredcode);
 
     dataList[0] = dataList[0].toString();
 
