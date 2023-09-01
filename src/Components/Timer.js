@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Redirect } from "react";
+import React, { useState, useEffect } from "react";
 
 function Timer() {
   const initialSeconds =
