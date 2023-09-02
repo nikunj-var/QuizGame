@@ -78,3 +78,15 @@
 li{
   list-style: none;
 }
+nav{
+  display: flex;
+  justify-content: center;
+}
+nav ul{
+  display: flex;
+  
+}
+nav ul li{
+  padding: 5px;
+  
+}
