@@ -9,6 +9,7 @@ import StudentPortal from "./Components/StudentPortal";
 import WaitingRoom from "./Components/WaitingRoom";
 import TeacherDashboard from "./Components/TeacherDashboard";
 import Navbar from "./Components/Navbar";
+import Result from "./Components/Result";
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
           <Route path="/teacherdashboard" element={<TeacherDashboard />} />
           <Route path="/showletter" element={<ShowLetter />} />
           <Route path="/navbar" element={<Navbar />} />
+          <Route path="/result" element={<Result />} />
         </Routes>
       </Router>
     </div>

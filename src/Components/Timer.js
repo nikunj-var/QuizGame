@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function Timer() {
   const initialSeconds =
-    parseInt(sessionStorage.getItem("remainingTime")) || 100;
+    parseInt(sessionStorage.getItem("remainingTime")) || 20;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [redirectToDashboard, setRedirectToDashboard] = useState(false);
 
