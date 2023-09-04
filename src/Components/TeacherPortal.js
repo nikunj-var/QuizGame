@@ -8,9 +8,20 @@ import { Link } from "react-router-dom";
 function TeacherPortal() {
   const navigate = useNavigate();
 
+  // code to delete all the previous record when new code is generated.
   const [text, settextfield] = useState("******");
   const [dataStored, setDataStored] = useState(false);
+
   const handleDataSubmit = async () => {
+    const quizValueRef = db.collection("quizResults");
+
+    // Get all documents in the collection
+    const querySnapshot = await quizValueRef.get();
+
+    // Delete each document
+    querySnapshot.forEach((doc) => {
+      doc.ref.delete();
+    });
     // Update data in Firestore
     await db.collection("singlecode").doc("singlevalue").set({
       data: text,

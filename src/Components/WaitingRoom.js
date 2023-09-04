@@ -6,7 +6,7 @@ function WaitingRoom() {
   useEffect(() => {
     const unsubscribe = db.collection("quizResults").onSnapshot((snapshot) => {
       const students = snapshot.docs.map((doc) => doc.data());
-      const quizHasStarted = students.some(
+      const quizHasStarted = students.find(
         (student) => student.status === "inside"
       );
       setQuizStarted(quizHasStarted);

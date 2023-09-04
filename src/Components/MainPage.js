@@ -4,7 +4,6 @@ import db from "./FireBase";
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 function MainPage() {
-  <Navbar />;
   const studentId = sessionStorage.getItem("studentId");
   const [score, setScore] = useState(0);
   const [wordArray, setWordArray] = useState([]);

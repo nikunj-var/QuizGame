@@ -14,6 +14,9 @@ function Navbar() {
   const handleTeacherPortal = () => {
     window.location.href = "/teacherportal";
   };
+  const handleResult = () => {
+    window.location.href = "/result";
+  };
   return (
     <nav>
       <ul>
@@ -21,6 +24,7 @@ function Navbar() {
         <li onClick={handleStudentDashboard}>StudentDashboard</li>
         <li onClick={handleTeacherDashboard}>TeacherDashboard</li>
         <li onClick={handleTeacherPortal}>TeacherPortal</li>
+        <li onClick={handleResult}>Result</li>
       </ul>
     </nav>
   );

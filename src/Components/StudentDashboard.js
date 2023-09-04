@@ -27,7 +27,7 @@ function StudentDashboard() {
 
   return (
     <div>
-      <h2>Quiz Result for Student ID: {studentId}</h2>
+      <h2>Quiz Result</h2>
       {quizResult ? (
         <>
           <p>Name: {quizResult.name}</p>
